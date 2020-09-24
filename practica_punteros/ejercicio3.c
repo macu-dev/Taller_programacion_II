@@ -3,13 +3,18 @@
 // recorrer el array deberá usar aritmética de punteros en lugar de índices del array.
 
 #include <stdio.h>
+#define LENGTH 5
 
 void ingreseNumbGuardarArray( float array[]);
 float getNumber();
+void imprimirArrayInver(float array[]);
 
 int main(void) {
   float arrNumb[5];
   ingreseNumbGuardarArray(arrNumb);
+  printf("\n");
+  printf("imprimiendo el arreglo de forma invertida");
+  imprimirArrayInver(arrNumb);
   
   return 0;
 }
@@ -17,7 +22,7 @@ int main(void) {
 
 void ingreseNumbGuardarArray( float array[]){
   
-  for(int index=0; index<5; index++){
+  for(int index = 0; index < LENGTH; index++){
     array[index] = getNumber();
   }
 }
@@ -34,4 +39,13 @@ float getNumber(){
       printf("ingrese un numero correcto\n");
     }
   } while (1);
+}
+
+void imprimirArrayInver(float array[]){
+  float *puntero = array;
+  for (int i = LENGTH - 1; i >= 0 ; i--){
+    printf("\n%.1f\n",  *(puntero +  i));
+
+  }
+  
 }
