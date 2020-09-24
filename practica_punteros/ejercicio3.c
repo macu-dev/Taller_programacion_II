@@ -5,10 +5,10 @@
 #include <stdio.h>
 
 void ingreseNumbGuardarArray( float array[]);
-int getNumber();
+float getNumber();
 
 int main(void) {
-  float arrNumb[100];
+  float arrNumb[5];
   ingreseNumbGuardarArray(arrNumb);
   
   return 0;
@@ -17,18 +17,18 @@ int main(void) {
 
 void ingreseNumbGuardarArray( float array[]){
   
-  for(int index=0; index<10; index++){
+  for(int index=0; index<5; index++){
     array[index] = getNumber();
   }
 }
 
-int getNumber(){
+float getNumber(){
   float item;
   do{
     printf("ingrese un numero por favor (limite < 100)\n");
-    scanf("%d", &item);
+    scanf("%f", &item);
 
-    if(item < 100){
+    if(item < 100.0 ){
         return item;
     }else{
       printf("ingrese un numero correcto\n");
