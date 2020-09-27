@@ -11,7 +11,7 @@ void strCopia(char *destino, const char *origen); // Copiador
 // modificarlos pero, en algunos compiladores tales como GCC es posible modificarlos (según
 // K&R el comportamiento es indefinido)*/
 char* reverse(char *string);//retorna una cadena que es string invertida
-// void strIzq(char *destino, const char *origen); // Saca blancos Izq.
+void strIzq(char *destino, const char *origen); // Saca blancos Izq.
 // void strDer(char *destino, const char *origen); // Saca blancos Der.
 // void strAmbos(char *destino, const char *origen); // Saca blancos Izq. y Der.
 // void strMayMin(char *destino, const char *origen, may_min m); // Convierte May. Min.
@@ -30,8 +30,8 @@ int main(){
   printf("Largo : %d\n", strLargo(text1));
   strCopia(result,text1);
   printf("Copia : [%s]\n", result);
-  // strIzq(result,text1);
-  // printf("Sin blancos a la Izq:");
+  strIzq(result,text1);
+  printf("Sin blancos a la Izq: [%s]\n", result);
   // puts(result);
   // strDer(result,text1);
   // printf("Der : [%s]\n", result);
@@ -83,4 +83,14 @@ char* reverse(char *string){
   }
    return ret;
   
+}
+
+void strIzq(char *destino, const char *origen){
+  int indice = 0;
+  while(origen[indice] == 32){
+    indice++;
+  }
+
+  strCopia(destino, &origen[indice]);
+
 }
