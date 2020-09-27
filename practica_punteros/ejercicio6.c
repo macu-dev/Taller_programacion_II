@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 typedef enum { MAYUSCULAS, MINUSCULAS } may_min;
 
@@ -15,7 +16,7 @@ void strIzq(char *destino, const char *origen); // Saca blancos Izq.
 void strDer(char *destino, const char *origen); // Saca blancos Der.
 void strCopialen(char *destino, const char *origen, int length);
 void strAmbos(char *destino, const char *origen); // Saca blancos Izq. y Der.
-// void strMayMin(char *destino, const char *origen, may_min m); // Convierte May. Min.
+void strMayMin(char *destino, const char *origen, may_min m); // Convierte May. Min.
 
 
 int main(){
@@ -38,10 +39,10 @@ int main(){
   printf("Der : [%s]\n", result);
   strAmbos(result,text1);
   printf("Ambos: [%s], sin blancos al principio ni al final.\n", result);
-  // strMayMin(result,text1, MAYUSCULAS);
-  // printf("Mayusculas : [%s]\n", result);
-  // strMayMin(result,text1, MINUSCULAS);
-  // printf("Minusculas : [%s]\n", result);
+  strMayMin(result,text1, MAYUSCULAS);
+  printf("Mayusculas : [%s]\n", result);
+  strMayMin(result,text1, MINUSCULAS);
+  printf("Minusculas : [%s]\n", result);
   reves = reverse (text1);
   printf("La cadena: %s invertida queda: %s\n",text1, reves);
   return 0;
@@ -131,4 +132,19 @@ void strDer(char *destino, const char *origen){
 void strAmbos(char *destino, const char *origen){
   strDer(destino,origen);
   strIzq(destino, destino);
+}
+
+void strMayMin(char *destino, const char *origen, may_min m){
+  int indice;
+  if(m){
+    for (indice = 0; origen[indice] != '\0'; ++indice){
+      destino[indice] = tolower(origen[indice]);
+    }
+	}else{
+    for (indice = 0; origen[indice] != '\0'; ++indice){
+		  destino[indice] = toupper(origen[indice]);
+    }
+  }
+
+  destino[indice]= 0;
 }
