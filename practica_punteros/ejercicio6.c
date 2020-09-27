@@ -14,7 +14,7 @@ char* reverse(char *string);//retorna una cadena que es string invertida
 void strIzq(char *destino, const char *origen); // Saca blancos Izq.
 void strDer(char *destino, const char *origen); // Saca blancos Der.
 void strCopialen(char *destino, const char *origen, int length);
-// void strAmbos(char *destino, const char *origen); // Saca blancos Izq. y Der.
+void strAmbos(char *destino, const char *origen); // Saca blancos Izq. y Der.
 // void strMayMin(char *destino, const char *origen, may_min m); // Convierte May. Min.
 
 
@@ -33,11 +33,11 @@ int main(){
   printf("Copia : [%s]\n", result);
   strIzq(result,text1);
   printf("Sin blancos a la Izq: [%s]\n", result);
-  // puts(result);
+  puts(result);
   strDer(result,text1);
   printf("Der : [%s]\n", result);
-  //strAmbos(result,text1);
-  // printf("Ambos: [%s], sin blancos al principio ni al final.\n", result);
+  strAmbos(result,text1);
+  printf("Ambos: [%s], sin blancos al principio ni al final.\n", result);
   // strMayMin(result,text1, MAYUSCULAS);
   // printf("Mayusculas : [%s]\n", result);
   // strMayMin(result,text1, MINUSCULAS);
@@ -126,4 +126,9 @@ void strDer(char *destino, const char *origen){
 
   strCopialen(destino, origen, lenght);
 
+}
+
+void strAmbos(char *destino, const char *origen){
+  strDer(destino,origen);
+  strIzq(destino, destino);
 }
